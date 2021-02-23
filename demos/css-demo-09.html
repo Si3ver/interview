@@ -14,6 +14,8 @@
   }
   .container-1 {
     text-align: center;
+    height: 200px;
+    line-height: 200px;
   }
   .container-2, .container-3, .container-4 {
     position: relative;
@@ -22,6 +24,27 @@
   .container-3 .item,
   .container-4 .item {
     position: absolute;
+  }
+
+  .container-2 .item {
+    left: 50%;
+    margin-left: -150px;
+    top: 50%;
+    margin-top: -50px;
+  }
+
+  .container-3 .item {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .container-4 .item {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
   }
 </style>
 
