@@ -1,0 +1,24 @@
+<!-- 如下代码，请问 AAA 和 BBB 之间的距离是多少？ -->
+<style>
+  p {
+    font-size: 16px;
+    line-height: 1;
+    margin-top: 10px;
+    margin-bottom: 15px;
+  }
+</style>
+
+<p id="A">AAA</p>
+<p></p>
+<p></p>
+<p></p>
+<p id="B">BBB</p>
+
+<script>
+  const eleA = document.querySelector('#A')
+  const eleB = document.querySelector('#B')
+  const hGap = eleB.offsetTop - eleA.offsetTop - eleA.offsetHeight
+  console.log(`A -> B纵向距离：${hGap}px`)
+</script>
+
+<!-- 外边距重叠 15px -->

@@ -1,0 +1,48 @@
+<style>
+  body {
+    margin: 20px;
+  }
+
+  .float-left {
+    float: left;
+  }
+  .clearfix:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+
+  .container {
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+  .container .item {
+    width: 100px;
+    height: 100px;
+  }
+  .border-blue {
+    border: 1px solid blue;
+  }
+  .border-red {
+    border: 1px solid red;
+  }
+</style>
+
+<div class="container">
+  <div class="item border-blue">
+    1
+  </div>
+  <div class="item border-red">
+    2
+  </div>
+</div>
+
+
+<div class="container clearfix">
+  <div class="item border-blue float-left">
+    3
+  </div>
+  <div class="item border-red float-left">
+    4
+  </div>
+</div>

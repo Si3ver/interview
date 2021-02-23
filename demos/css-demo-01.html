@@ -1,0 +1,35 @@
+<!-- 如下代码，请问 div1 的 offsetWidth 是多大？ -->
+<style>
+#div1 {
+  width: 100px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin: 10px;
+}
+</style>
+
+<div id="div1">
+</div>
+
+<script>
+  const ele = document.querySelector('#div1')
+  console.log(ele)
+  console.log(`offsetWidth: ${ele.offsetWidth}px`)
+
+  ele.style.boxSizing = 'border-box'
+  console.log(`offsetWidth: ${ele.offsetWidth}px`)
+</script>
+
+<!-- offsetWidth = (内容宽度 + padding + border) -->
+<!-- (100 + 10 * 2 + 1 * 2) = 122px -->
+
+<!--
+  一个元素的属性：
+  offsetParent  个指向最近的（指包含层级上的最近）包含该元素的定位元素或者最近的 table,td,th,body元素
+  offsetTop     当前元素相对于其 offsetParent 元素的顶部内边距的距离
+  offsetLeft    当前元素左上角相对于  HTMLElement.offsetParent 节点的左边界偏移的像素值
+  offsetHeight  布局高度
+  offsetWidth   布局宽度
+  clientWidth   表示元素的内部宽度，以像素计。该属性包括内边距 padding，但不包括边框 border、外边距 margin 和垂直滚动条
+  scrollWidth   在不使用水平滚动条的情况下适合视口中的所有内容所需的最小宽度
+-->
