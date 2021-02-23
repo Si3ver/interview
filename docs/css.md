@@ -60,6 +60,7 @@
 flex实现一个三点的骰子
 
 [3点骰子🌰](./css-demo-07.html)
+## 定位
 
 ### 7. 水平居中
 
@@ -81,4 +82,58 @@ flex实现一个三点的骰子
 
 百分比行高，继承的是计算后的数值
 
+## CSS 响应式
 
+### 10. rem 是什么？
+
+1. px 绝对长度单位
+2. em 相对父元素，不常用
+3. rem 相对根元素(`<html>`)font-size，常用于响应式布局
+
+### 11. 响应式布局常用方案
+
+1. media-query + rem
+2. vw、vh
+
+```css
+@mdeia only screen and (max-width: 374px) {
+  /* iphone 5 或者更小的尺寸 */
+  html {
+    font-size: 86px;
+  }
+}
+@mdeia only screen and (min-width: 375px) and (max-width: 413px) {
+  /* iphone 6/7/8/x */
+  html {
+    font-size: 100px;
+  }
+}
+@mdeia only screen and (min-width: 414px) {
+  /* iphone 6p或者更大的尺寸 */
+  html {
+    font-size: 110px;
+  }
+}
+body {
+  font-size: 0.16rem;
+}
+```
+
+### 12. rem 实现响应式的弊端
+
++ rem 的“阶梯”性 （离散性）
+
+### 13. vw、vh
+
+**网页视口尺寸**
+
+1. window.screen.height       // 屏幕高度
+2. window.innerHeight         // 网页视口高度
+3. document.body.clientHeight // body高度
+
+**vw vh vmax vmin**
+
+1. vw 网页视口高度的 1/100
+2. vh 网页视口宽度的 1/100
+
+[🌰](../demos/css-demo-10.html)
