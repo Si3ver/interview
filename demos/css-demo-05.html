@@ -5,6 +5,7 @@
     min-width: 550px;
   }
   header, footer {
+    clear: both;
     background-color: #f1f1f1;
   }
   main {
@@ -15,17 +16,28 @@
   #left {
     background-color: yellow;
     width: 200px;
+    margin-left: -100%;
+    position: relative;
+    left: -200px;
   }
   #right {
     background-color: red;
     width: 150px;
+    margin-right: -150px;
+  }
+
+  #container {
+    padding: 0 150px 0 200px;
+  }
+  #container .col {
+    float: left;
   }
 </style>
 
 <header>header</header>
 <div id="container">
-  <main>main</main>
-  <div id="left">left</div>
-  <div id="right">right</div>
+  <main class="col">main</main>
+  <div id="left" class="col">left</div>
+  <div id="right" class="col">right</div>
 </div>
 <footer>footer</footer>
