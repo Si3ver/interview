@@ -70,3 +70,38 @@ function deepClone(origin = {}, hashMap = new WeakMap()) {
 ## 4. 异步
 
 
+## 运行环境
+
+### 手写防抖
+
+```js
+const debounce = function(fn, delay = 500) {
+  let timer = null
+
+  return function () {
+    if (timer) {
+      clearTimeout(timer)
+    }
+    timer = setTimeout(() => {
+      fn.apply(this, arguments)
+      timer = null
+    }, delay)
+  }
+}
+```
+
+### 手写节流
+
+```js
+const throttle = function(fn, delay = 100) {
+  let timer = null
+
+  return function () {
+    if (timer) return
+    timer = setTimeout(() => {
+      fn.apply(this, arguments)
+      timer = null
+    }, delay)
+  }
+}
+```
