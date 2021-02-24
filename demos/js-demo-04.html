@@ -1,0 +1,30 @@
+<!-- 手写bind函数 -->
+
+<script>
+Function.prototype.myBind = function () {
+  // 将参数解析为数组
+  const args = Array.prototype.slice.call(arguments)
+  console.log("🚀 ~ args", args)
+  // 获取 this
+  const t = args.shift()
+  const self = this
+  return function() {
+    return self.apply(t, args)
+  }
+}
+
+
+function fn1 (a, b, c) {
+  console.log('this', this)
+  console.log(a, b, c)
+  return 'this is fn1'
+}
+
+const fn2 = fn1.bind({x: 100}, 10, 20, 30)
+fn2()
+
+const fn3 = fn1.myBind({x: 100}, 10, 20, 30)
+fn3()
+</script>
+
+

@@ -1,0 +1,41 @@
+<script>
+  const obj1 = {
+    age: 20,
+    name: 'alw',
+    address: {
+      city: 'beijing'
+    },
+    arr: ['a', 1]
+  }
+
+  const obj2 = obj1
+  obj2.address.city = 'shenzhen'
+
+  // 深拷贝
+  function deepClone(origin = {}, hashMap = new WeakMap()) {
+    // 1. 判断是否是一般对象
+    if (typeof origin !== 'object' || origin == null) return origin
+    if (origin instanceof Date) return new Date(origin)
+    if (origin instanceof RegExp) return new RegExp(origin)
+
+    // 2. 循环引用处理
+    const hashKey = hashMap.get(origin)
+    if (hashKey) return hashKey
+
+    let target = new origin.constructor()
+    hashMap.set(origin, target)
+
+    // 3. 递归拷贝每个属性
+    for(let key in origin) {
+      if (origin.hasOwnProperty(key)) {
+        target[key] = deepClone(origin[key])
+      }
+    }
+    return target
+  }
+
+  const obj3 = deepClone(obj1)
+  obj3.address.city = 'shanghai'
+
+  console.log(obj1, obj2, obj3)
+</script>

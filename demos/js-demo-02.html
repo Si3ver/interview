@@ -1,0 +1,32 @@
+<script>
+
+class People {
+  constructor(name) {
+    this.name = name
+  }
+  eat() {
+    console.log(`${this.name} eat`)
+  }
+}
+
+class Student extends People {
+  constructor(name, number) {
+    super(name)
+    this.number = number
+  }
+
+  sayHi() {
+    console.log(
+      `name: ${this.name}, number: ${this.number}`
+    )
+  }
+}
+
+const p1 = new Student('p1', 100)
+const p2 = new Student('p2', 101)
+console.log(p1, p2)
+console.log(typeof People, typeof Student, typeof p1, typeof p2)
+
+p1.eat()
+p1.sayHi()
+</script>

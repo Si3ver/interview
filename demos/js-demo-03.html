@@ -1,0 +1,43 @@
+<!-- 实现简易版jQuery -->
+
+<div class="container">
+  <p>111</p>
+  <p>222</p>
+  <p>333</p>
+</div>
+
+
+<script>
+class jQuery {
+  constructor(selector) {
+    const result = document.querySelectorAll(selector)
+    for (let i = 0; i < result.length; ++i) {
+      this[i] = result[i]
+    }
+    this.length = result.length
+  }
+  get (index) {
+    return this[index]
+  }
+  each(fn) {
+    for (let i = 0; i < this.length; ++i) {
+      const elem = this[i]
+      fn(elem)
+    }
+  }
+  on (eType, fn) {
+    return this.each(elem => {
+      elem.addEventListener(eType, fn, false)
+    })
+  }
+}
+
+const $p = new jQuery('p')
+$p.each((elem => console.log(elem)))
+$p.on('click', (e) => {
+  console.log(e)
+  alert(`click`)
+})
+</script>
+
+
