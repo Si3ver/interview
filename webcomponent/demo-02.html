@@ -1,0 +1,27 @@
+<!-- 扩展已有的 HTML 标签 -->
+<ul is="skill-list" skills="js,css,html"></ul>
+
+<script>
+class SkillList extends HTMLUListElement {
+  constructor() {
+    // 必须调用 super 方法
+    super();
+
+    if (
+      this.hasAttribute("skills") &&
+      this.getAttribute("skills").includes(',')
+    ) {
+      // 读取 skills 属性的值
+      const skills = this.getAttribute("skills").split(',');
+      skills.forEach(skill => {
+        const item = document.createElement("li");
+        item.innerText = skill;
+        this.appendChild(item);
+      })
+    }
+  }
+}
+
+// 对 <ul> 标签进行扩展
+customElements.define("skill-list", SkillList, { extends: "ul" });
+</script>

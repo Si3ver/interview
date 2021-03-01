@@ -1,0 +1,17 @@
+<!-- shadow dom -->
+<div id="root1"></div>
+<div id="root2"></div>
+
+<script>
+  // 获取页面的
+  const $root1 = document.getElementById('root1');
+  const $root2 = document.getElementById('root2');
+  const $p = document.createElement('p');
+  $p.innerText = '创建一个 shadow 节点';
+
+  const shadow1 = $root1.attachShadow({mode: 'open'});
+  const shadow2 = $root2.attachShadow({mode: 'closed'});
+  shadow1.appendChild($p);
+  shadow2.appendChild($p);
+  console.log($root1.shadowRoot, $root2.shadowRoot)
+</script>

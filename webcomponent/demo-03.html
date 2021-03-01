@@ -1,0 +1,43 @@
+<!-- 生命周期 -->
+<!-- 页面插入一个 iframe，将自定义元素移入其中 -->
+<iframe width="0" height="0"></iframe>
+<hello-user name="Shenfq"></hello-user>
+
+<script>
+class HelloUser extends HTMLElement {
+  constructor() {
+    // 必须调用 super 方法
+    super();
+
+    // 创建一个 div 标签
+    const $box = document.createElement("p");
+    let userName = "User Name";
+    if (this.hasAttribute("name")) {
+      // 如果存在 name 属性，读取 name 属性的值
+      userName = this.getAttribute("name");
+    }
+    // 设置 div 标签的文本内容
+    $box.innerText = `Hello ${userName}`;
+
+    // 创建一个 shadow 节点，创建的其他元素应附着在该节点上
+    const shadow = this.attachShadow({ mode: "open" });
+    shadow.appendChild($box);
+  }
+  connectedCallback() {
+    console.log('创建元素')
+    // 5s 后移动元素到 iframe
+    setTimeout(() => {
+      const iframe = document.getElementsByTagName("iframe")[0]
+      iframe.contentWindow.document.adoptNode(this)
+    }, 5e3)
+  }
+  disconnectedCallback() {
+    console.log('删除元素')
+  }
+  adoptedCallback() {
+    console.log('移动元素')
+  }
+}
+// 定义一个名为 <hello-user /> 的元素
+customElements.define("hello-user", HelloUser);
+</script>
