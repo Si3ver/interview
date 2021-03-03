@@ -1,0 +1,18 @@
+<!-- HTML结构 -->
+<ol id="test-list">
+  <li class="lang">Scheme</li>
+  <li class="lang">JavaScript</li>
+  <li class="lang">Python</li>
+  <li class="lang">Ruby</li>
+  <li class="lang">Haskell</li>
+</ol>
+
+<script>
+  var langs = document.getElementById('test-list').children
+  var txts = [...langs].map(elem => elem.innerText).sort()
+  // ;[...langs].forEach(
+  //   (elem, i) => {
+  //     elem.innerText = txts[i]  // 修改innerText
+  //   }
+  // )
+</script>
