@@ -74,6 +74,8 @@ function deepClone(origin = {}, hashMap = new WeakMap()) {
 
 ### 手写防抖
 
+场景：input
+
 ```js
 const debounce = function(fn, delay = 500) {
   let timer = null
@@ -91,6 +93,8 @@ const debounce = function(fn, delay = 500) {
 ```
 
 ### 手写节流
+
+场景：resize、scroll
 
 ```js
 const throttle = function(fn, delay = 100) {
