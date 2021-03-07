@@ -8,7 +8,7 @@
 4. [deepClone](./myDeepClone.js)
 5. [debounce](./debounce.js)
 6. [throttle](./throttle.js)
-7. [flatArray](./...)
+7. [flatArray](./flatten.js)
 8. [extends](./...)
 9. [EventEmitter](./...)
 10. [currying](./...)
