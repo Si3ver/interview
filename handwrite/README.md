@@ -1,7 +1,9 @@
 ## 手写系列
 
 > [初、中级前端应该要掌握的手写代码实现](https://juejin.cn/post/6844904052237713422)
+
 > [手写35道JS面试高频题(一)](https://juejin.cn/post/6859026583533912072)
+
 > [手写35道JS面试高频题(二)](https://juejin.cn/post/6870043180444680200)
 
 1. [call/apply/bind](./callApplyBind.js)
@@ -13,8 +15,5 @@
 7. [flatArray](./flatten.js)
 8. [extends1~4](./extends-04.js)
 9. [EventEmitter](./eventEmitter.js)
-10. [currying](./...)
-11. [Promise](./...)
-12. [Promise.all](./...)
-13. [Promise.race](./...)
-14. [Promise.finally](./...)
+10. [currying](./currying.js)
+11. [Promise](./myPromise.js)

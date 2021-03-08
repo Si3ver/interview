@@ -98,7 +98,7 @@ MyPromise.all = function (promises) {
     let orderIdx = 0
 
     const process = (val, i) => {
-    console.log('🚀~ val, i', val, i)
+      console.log('🚀~ val, i', val, i)
       res[i] = val
       if (++orderIdx === promises.length) {
         resolve(res)
