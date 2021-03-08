@@ -12,7 +12,7 @@
 6. [throttle](./throttle.js)
 7. [flatArray](./flatten.js)
 8. [extends1~4](./extends-04.js)
-9. [EventEmitter](./...)
+9. [EventEmitter](./eventEmitter.js)
 10. [currying](./...)
 11. [Promise](./...)
 12. [Promise.all](./...)
