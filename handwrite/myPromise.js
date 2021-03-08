@@ -1,26 +1,27 @@
 // 手撕Promise、Promise.all、Promise.race、Promise.finally、
-class MyPromise {
-  static PENDING = 'PENDING'
-  static RESOLVED = 'RESOLVED'
-  static REJECTED = 'REJECTED'
+const PENDING = 'PENDING'
+const RESOLVED = 'RESOLVED'
+const REJECTED = 'REJECTED'
 
+class MyPromise {
   constructor(executor) {
-    this.status = this.PENDING
+    this.status = PENDING
     this.value = void(0)
     this.reason = void(0)
+    this.hasExecOnRejected = false
     this.onResolvedCallback = []
     this.onRejectedCallback = []
 
     const resolve = (value) => {
-      if (this.status === this.PENDING) {
-        this.status = this.RESOLVED
+      if (this.status === PENDING) {
+        this.status = RESOLVED
         this.value = value
         this.onResolvedCallback.forEach(fn => fn())
       }
     }
     const reject = (reason) => {
-      if (this.status === this.PENDING) {
-        this.status = this.REJECTED
+      if (this.status === PENDING) {
+        this.status = REJECTED
         this.reason = reason
         this.onRejectedCallback.forEach(fn => fn())
       }
@@ -34,18 +35,22 @@ class MyPromise {
   }
   then (onResolved, onRejected) {
     switch (this.status) {
-      case this.PENDING:
+      case PENDING:
         this.onResolvedCallback.push(() => {
           onResolved(this.value)
         })
-        onRejected && this.onRejectedCallback.push(() => {
-          onRejected(this.reason)
-        })
+        if (onRejected) {
+          this.onRejectedCallback.push(
+            () => {
+              onRejected(this.reason)
+            }
+          )
+        }
         break
-      case this.RESOLVED:
+      case RESOLVED:
         onResolved(this.value)
         break
-      case this.REJECTED:
+      case REJECTED:
         onRejected && onRejected(this.reason)
         break
       default:
@@ -95,28 +100,28 @@ class MyPromise {
 }
 
 // ---- test case ----
-new Promise((resolve, reject) => {
-  setTimeout(() => {
-    // resolve('ok')
-    reject('not ok')
-  }, 1000);
-}).then().then(
-  (data) => {
-    console.log('[Promise] success', data)
-  },
-  (err) => {
-    console.log('[Promise] fail', err)
-    // throw err
-  }
-).catch(
-  (err) => {
-    console.log('[Promise] catch', err)
-  }
-).finally(
-  () => {
-    console.log('[Promise] finally')
-  }
-)
+// new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     // resolve('ok')
+//     reject('not ok')
+//   }, 1000);
+// }).then().then(
+//   (data) => {
+//     console.log('[Promise] success', data)
+//   },
+//   (err) => {
+//     console.log('[Promise] fail', err)
+//     // throw err
+//   }
+// ).catch(
+//   (err) => {
+//     console.log('[Promise] catch', err)
+//   }
+// ).finally(
+//   () => {
+//     console.log('[Promise] finally')
+//   }
+// )
 
 
 new MyPromise((resolve, reject) => {
@@ -124,7 +129,7 @@ new MyPromise((resolve, reject) => {
     // resolve('ok')
     reject('not ok')
   }, 1000);
-}).then().then().then(
+}).then(
   (data) => {
     console.log('[MyPromise] success', data)
   },
