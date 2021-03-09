@@ -1,0 +1,33 @@
+<!-- 我们现在要实现一个红绿灯，把一个圆形 div 按照绿色 3 秒，黄色 1 秒，红色 2 秒循环改变背景色 -->
+
+
+<style>
+  #traffic-light {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+  }
+</style>
+
+<div id="traffic-light"></div>
+
+<script>
+  function sleep(duration) {
+    return new Promise((resolve, reject) => {
+      setTimeout(resolve, duration)
+    })
+  }
+  async function changeColor (dom, duration, color) {
+    dom.style.background = color
+    await sleep(duration)
+  }
+  async function main() {
+    const dom = document.getElementById('traffic-light')
+    while (true) {
+      await changeColor(dom, 3000, 'green')
+      await changeColor(dom, 1000, 'yellow')
+      await changeColor(dom, 2000, 'red')
+    }
+  }
+  main()
+</script>
