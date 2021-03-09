@@ -17,3 +17,4 @@
 9. [EventEmitter](./eventEmitter.js)
 10. [currying](./currying.js)
 11. [Promise](./myPromise.js)
+12. [模板字符串](./template.js)
