@@ -18,3 +18,7 @@
 10. [currying](./currying.js)
 11. [Promise](./myPromise.js)
 12. [模板字符串](./template.js)
+
+## 面试题
+
++ [获取当前页面出现次数最多的标签](./maxDomEle.js)
