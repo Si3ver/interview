@@ -22,3 +22,6 @@
 ## 面试题
 
 + [获取当前页面出现次数最多的标签](./maxDomEle.js)
++ [api计算年龄](./getAge.js)
++ [每隔2秒请求一次，并中断](./fetchDelay.js)
++ [扁平结构转成层次结构](./translate.js)
