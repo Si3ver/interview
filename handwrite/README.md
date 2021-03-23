@@ -25,3 +25,4 @@
 + [api计算年龄](./getAge.js)
 + [每隔2秒请求一次，并中断](./fetchDelay.js)
 + [扁平结构转成层次结构](./translate.js)
++ [实现before，after](./beforeAfter.js)
