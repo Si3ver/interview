@@ -7,6 +7,13 @@
 + [JavaScript](./docs/JavaScript.md)
 + [手撕系列](./handwrite/)
 
+## SPA前端路由模式
+
++ [hash](./router/hash.html)
++ [history](./router/history.html)
+
+![](./assets/event-hashchange.png)
+
 ## 面试题集锦
 
 ### ESM 和 CJS 的区别
