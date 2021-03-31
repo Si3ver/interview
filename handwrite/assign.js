@@ -1,4 +1,9 @@
-// 模拟实现 Object.assign
+/**
+ * 模拟实现 Object.assign
+ * @param {Object} target 接收对象
+ * @param {Object} source 被拷贝的对象
+ * @returns 
+ */
 function myAssign(target, source) {
   if (target == null) {
     throw new TypeError('Cannot convert undefined or null to object')

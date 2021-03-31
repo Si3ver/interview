@@ -1,33 +1,36 @@
 // https://github.com/LeuisKen/leuisken.github.io/issues/2
+
 // 将一个扁平对象，根据 keys 树形化
 function toTree(obj, [key, ...rest], result = {}) {
   if (result.value == null) {
     result.value = obj[key]
     if (rest.length) {
-      result.children = toTreeList(obj, rest)
+      result.children = addEntryIntoTree(obj, rest)
     }
   } else if (result.value === obj[key] && rest.length) {
-    toTreeList(obj, rest, result.children)
+    addEntryIntoTree(obj, rest, result.children)
   }
   return result
 }
 
-// 将一个扁平对象的树形化产物，不重复地放到 list 里
-function toTreeList(obj, keys, list = []) {
-  let value = obj[keys[0]]
-  let target = list.find(item => item.value === value)
+// 将一个扁平对象的树形化产物，不重复地放到 tree 里
+function addEntryIntoTree(entry, keys, tree = []) {
+  let value = entry[keys[0]]
+  let target = tree.find(item => item.value === value)
   if (target) {
-    toTree(obj, keys, target)
+    toTree(entry, keys, target)
   } else {
-    list.push(toTree(obj, keys))
+    tree.push(toTree(entry, keys))
   }
-  return list
+  return tree
 }
 
 // 将一个扁平化对象组成的列表，变成树形化的列表
-function listToTree(list = [], keys = []) {
-  return list.reduce(
-    (result, obj) => toTreeList(obj, keys, result),
+function translate(entries = [], keys = []) {
+  return entries.reduce(
+    (tree, entry) => {
+      return addEntryIntoTree(entry, keys, tree)
+    },
     []
   )
 }
@@ -35,15 +38,15 @@ function listToTree(list = [], keys = []) {
 
 
 // ---- test case ----
-const entries = [
+var entries = [
   { "province": "浙江", "city": "杭州", "name": "西湖" },
   { "province": "四川", "city": "成都", "name": "锦里" },
   { "province": "四川", "city": "成都", "name": "方所" },
   { "province": "四川", "city": "阿坝", "name": "九寨沟" }
 ]
-
-const keys = ['province', 'city', 'name']
-console.log(JSON.stringify(listToTree(entries, keys), null, 2))
+var keys = ['province', 'city', 'name']
+// translate(entries, keys)
+console.log(JSON.stringify(translate(entries, keys), null, 2))
 
 /**
 [

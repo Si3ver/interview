@@ -34,9 +34,6 @@
   - 从一定程度上，mixin 弥补了 JavaScript 单一原型链的缺陷，可以实现类似于多重继承的效果。
 + mixin + 工厂模式 -> 寄生式继承
 
-### 项目，如何提高可扩展性
-
-
 ### HTTPS 哪三个随机数？
 
-
+client Random、server random、pre-master
