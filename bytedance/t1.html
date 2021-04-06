@@ -1,0 +1,45 @@
+<!-- 实现一个按钮，hover时开启 -->
+<!-- concurrentColor -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Button</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    .button {
+      width: 300px;
+      height: 100px;
+      background: currentColor;
+      border: 10px solid currentColor;
+      color: #999;
+      position: relative;
+      transition: color .5s ease;
+    }
+    .button:hover {
+      color: green;
+    }
+    .button::after {
+      content: ' ';
+      background: #fff;
+      width: 80px;
+      height: 80px;
+      position: absolute;
+      left: 10px;
+      top: 10px;
+    }
+    .button:hover::after {
+      transform: translateX(200px);
+      transition: all 1s ease;
+    }
+  </style>
+</head>
+<body>
+  <div class="button"></div>
+</body>
+</html>
